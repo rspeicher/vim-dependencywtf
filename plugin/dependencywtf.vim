@@ -5,6 +5,8 @@ function! DependencyWTF()
     call l:gemfileWTF(l:line)
   elseif expand('%:e') == 'gemspec'
     call l:gemspecWTF(l:line)
+  elseif &filetype == "vim"
+    call l:vimWTF(l:line)
   endif
 endfunction
 
@@ -43,6 +45,30 @@ function! l:gemNameFromGemspec(line)
   "   s.add_development_dependency "bundler", ['>= 1.0.0']
   "   s.add_development_dependency 'bundler'
   return matchstr(a:line, '\v.*add_(development_)?dependency ("|'')\zs(\w|-)+\ze("|'')')
+endfunction
+" }}}
+
+" {{{ Vundle
+function! l:vimWTF(line)
+  let bundle = l:bundleName(a:line)
+
+  " TODO: Support for 'git://' style
+  if bundle != ""
+    if match(bundle, '/') == -1
+      call l:openURL("https://github.com/vim-scripts/" . bundle)
+    else
+      call l:openURL("https://github.com/" . bundle)
+    endif
+  endif
+endfunction
+
+function! l:bundleName(line)
+  " Must match the following lines:
+  "   Bundle 'tsigo/vim-dependencywtf'
+  "   Bundle 'tpope/vim-rails.git'
+  "   Bundle "tpope/vim-rails"
+  "   Plugin "tpope/vim-eunuch"
+  return matchstr(a:line, '\v^(Bundle|Plugin) ("|'')\zs(.*)+\ze("|'')')
 endfunction
 " }}}
 
