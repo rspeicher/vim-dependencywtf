@@ -9,7 +9,7 @@ Find out what the fuck that dependency is.
 Recommended installation with [Vundle](https://github.com/gmarik/vundle):
 
 ```vim
-Bundle 'tsigo/vim-dependencywtf'
+Plugin 'tsigo/vim-dependencywtf'
 ```
 
 ## Supported package managers
