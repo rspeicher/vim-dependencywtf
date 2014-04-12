@@ -45,6 +45,12 @@ bundle install
 bundle exec rake
 ```
 
+## History
+
+**1.0.0** (2014-04-12)
+
+* Initial release
+
 ## Credits
 
 ## License
