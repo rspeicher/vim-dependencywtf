@@ -11,7 +11,11 @@ function! DependencyWTF()
 endfunction
 
 function! l:openURL(url)
-  execute "silent !open " . a:url
+  if exists("g:dependencywtf_testing")
+    echo a:url
+  else
+    execute "silent !open " . a:url
+  endif
 endfunction
 
 " {{{ Gemfile
@@ -23,10 +27,6 @@ function! l:gemfileWTF(line)
 endfunction
 
 function! l:gemNameFromGemfile(line)
-  " Must match the following lines:
-  "   gem "jquery-rails"
-  "   gem 'active_support'
-  "   gem 'foo', '1.0.0', require: false
   return matchstr(a:line, '\vgem ("|'')\zs(\w|-)+\ze("|'')')
 endfunction
 " }}}
@@ -40,10 +40,6 @@ function! l:gemspecWTF(line)
 endfunction
 
 function! l:gemNameFromGemspec(line)
-  " Must match the following lines:
-  "   s.add_dependency 'activesupport', ['>= 3.0.0']
-  "   s.add_development_dependency "bundler", ['>= 1.0.0']
-  "   s.add_development_dependency 'bundler'
   return matchstr(a:line, '\v.*add_(development_)?dependency ("|'')\zs(\w|-)+\ze("|'')')
 endfunction
 " }}}
@@ -63,11 +59,6 @@ function! l:vimWTF(line)
 endfunction
 
 function! l:bundleName(line)
-  " Must match the following lines:
-  "   Bundle 'tsigo/vim-dependencywtf'
-  "   Bundle 'tpope/vim-rails.git'
-  "   Bundle "tpope/vim-rails"
-  "   Plugin "tpope/vim-eunuch"
   return matchstr(a:line, '\v^(Bundle|Plugin) ("|'')\zs(.*)+\ze("|'')')
 endfunction
 " }}}
