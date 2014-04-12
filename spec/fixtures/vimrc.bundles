@@ -1,0 +1,9 @@
+Bundle 'tpope/vim-rails.git'
+Bundle "rstacruz/sparkup", {'rtp': 'vim/'}
+Bundle "L9"
+Bundle 'FuzzyFinder'
+
+Plugin 'tpope/vim-rails.git'
+Plugin "rstacruz/sparkup", {'rtp': 'vim/'}
+Plugin "L9"
+Plugin 'FuzzyFinder'
