@@ -28,6 +28,23 @@ Add your preferred key mappings to your `.vimrc` file.
 map <Leader>dw :call DependencyWTF()<CR>
 ```
 
+## Development
+
+Issues and/or pull requests for additional package managers would be very much
+appreciated.
+
+Automated tests for the Vim plugin itself are made possible by the awesome
+[vimrunner](https://github.com/AndrewRadev/vimrunner) gem. Make sure any
+functionality you add has the appropriate test cases!
+
+Running the specs:
+
+```sh
+gem install bundler
+bundle install
+bundle exec rake
+```
+
 ## Credits
 
 ## License
