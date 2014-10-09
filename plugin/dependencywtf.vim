@@ -1,3 +1,6 @@
+com! -nargs=0 DependencyWTF
+\ call DependencyWTF()
+
 function! DependencyWTF()
   let s:line = getline('.')
 

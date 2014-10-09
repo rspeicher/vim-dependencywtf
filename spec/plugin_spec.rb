@@ -25,7 +25,7 @@ describe 'vim-dependencywtf' do
 
   # Run the main `DependencyWTF()` plugin command
   def wtf
-    vim.command('call DependencyWTF()')
+    vim.command('DependencyWTF')
   end
 
   context 'in a Gemfile' do

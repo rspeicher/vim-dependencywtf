@@ -25,7 +25,7 @@ Plugin 'tsigo/vim-dependencywtf'
 Add your preferred key mappings to your `.vimrc` file.
 
 ```vim
-map <Leader>dw :call DependencyWTF()<CR>
+map <Leader>dw :DependencyWTF<CR>
 ```
 
 ## Development
@@ -46,6 +46,11 @@ bundle exec rake
 ```
 
 ## History
+
+**1.0.1** (2014-10-08)
+
+* Fix startup warnings
+* Add `DependencyWTF` user command
 
 **1.0.0** (2014-04-12)
 
