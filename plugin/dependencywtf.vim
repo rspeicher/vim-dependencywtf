@@ -1,16 +1,16 @@
 function! DependencyWTF()
-  let l:line = getline('.')
+  let s:line = getline('.')
 
   if expand('%:t') == 'Gemfile'
-    call l:gemfileWTF(l:line)
+    call s:gemfileWTF(s:line)
   elseif expand('%:e') == 'gemspec'
-    call l:gemspecWTF(l:line)
+    call s:gemspecWTF(s:line)
   elseif &filetype == "vim"
-    call l:vimWTF(l:line)
+    call s:vimWTF(s:line)
   endif
 endfunction
 
-function! l:openURL(url)
+function! s:openURL(url)
   if exists("g:dependencywtf_testing")
     echo a:url
   else
@@ -19,46 +19,46 @@ function! l:openURL(url)
 endfunction
 
 " {{{ Gemfile
-function! l:gemfileWTF(line)
-  let gemName = l:gemNameFromGemfile(a:line)
+function! s:gemfileWTF(line)
+  let gemName = s:gemNameFromGemfile(a:line)
   if gemName != ""
-    call l:openURL("https://rubygems.org/gems/" . gemName)
+    call s:openURL("https://rubygems.org/gems/" . gemName)
   endif
 endfunction
 
-function! l:gemNameFromGemfile(line)
+function! s:gemNameFromGemfile(line)
   return matchstr(a:line, '\vgem ("|'')\zs(\w|-)+\ze("|'')')
 endfunction
 " }}}
 
 " {{{ gemspec
-function! l:gemspecWTF(line)
-  let gemName = l:gemNameFromGemspec(a:line)
+function! s:gemspecWTF(line)
+  let gemName = s:gemNameFromGemspec(a:line)
   if gemName != ""
-    call l:openURL("https://rubygems.org/gems/" . gemName)
+    call s:openURL("https://rubygems.org/gems/" . gemName)
   endif
 endfunction
 
-function! l:gemNameFromGemspec(line)
+function! s:gemNameFromGemspec(line)
   return matchstr(a:line, '\v.*add_(development_)?dependency ("|'')\zs(\w|-)+\ze("|'')')
 endfunction
 " }}}
 
 " {{{ Vundle
-function! l:vimWTF(line)
-  let bundle = l:bundleName(a:line)
+function! s:vimWTF(line)
+  let bundle = s:bundleName(a:line)
 
   " TODO: Support for 'git://' style
   if bundle != ""
     if match(bundle, '/') == -1
-      call l:openURL("https://github.com/vim-scripts/" . bundle)
+      call s:openURL("https://github.com/vim-scripts/" . bundle)
     else
-      call l:openURL("https://github.com/" . bundle)
+      call s:openURL("https://github.com/" . bundle)
     endif
   endif
 endfunction
 
-function! l:bundleName(line)
+function! s:bundleName(line)
   return matchstr(a:line, '\v^(Bundle|Plugin) ("|'')\zs(\w|-|\/|\.)+\ze("|'')')
 endfunction
 " }}}
