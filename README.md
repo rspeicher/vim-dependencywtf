@@ -47,6 +47,10 @@ bundle exec rake
 
 ## History
 
+**1.0.2** (2015-02-26)
+
+* Call `redraw!` after opening
+
 **1.0.1** (2014-10-08)
 
 * Fix startup warnings

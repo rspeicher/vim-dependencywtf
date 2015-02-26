@@ -18,6 +18,7 @@ function! s:openURL(url)
     echo a:url
   else
     execute "silent !open " . a:url
+    redraw!
   endif
 endfunction
 
