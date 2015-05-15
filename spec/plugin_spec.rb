@@ -33,9 +33,9 @@ describe 'vim-dependencywtf' do
       vim.edit fixture('Gemfile')
     end
 
-    it 'matches a simple gem in single quotes' do
-      line 14
-      wtf.should eq 'https://rubygems.org/gems/rails-observers'
+    it 'matches a gem with a version string' do
+      line 11
+      wtf.should eq 'https://rubygems.org/gems/rails'
     end
 
     it 'matches a simple gem in double quotes' do
@@ -43,9 +43,9 @@ describe 'vim-dependencywtf' do
       wtf.should eq 'https://rubygems.org/gems/protected_attributes'
     end
 
-    it 'matches a gem with a version string' do
-      line 11
-      wtf.should eq 'https://rubygems.org/gems/rails'
+    it 'matches a simple gem in single quotes' do
+      line 14
+      wtf.should eq 'https://rubygems.org/gems/rails-observers'
     end
 
     it 'matches a gem with a group' do
@@ -100,19 +100,24 @@ describe 'vim-dependencywtf' do
       wtf.should eq 'https://github.com/tpope/vim-rails.git'
     end
 
-    it 'matches a GitHub-style Plugin in single quotes' do
-      line 6
-      wtf.should eq 'https://github.com/tpope/vim-rails.git'
-    end
-
     it 'matches a GitHub-style Bundle in double quotes with extra arguments' do
       line 2
       wtf.should eq 'https://github.com/rstacruz/sparkup'
     end
 
+    it 'matches a GitHub-style Plugin in single quotes' do
+      line 6
+      wtf.should eq 'https://github.com/tpope/vim-rails.git'
+    end
+
     it 'matches a Vimscripts-style Bundle' do
       line 8
       wtf.should eq 'https://github.com/vim-scripts/L9'
+    end
+
+    it 'matches GitHub-style Plug in single quotes' do
+      line 11
+      expect(wtf).to eq 'https://github.com/tpope/vim-rails.git'
     end
   end
 end

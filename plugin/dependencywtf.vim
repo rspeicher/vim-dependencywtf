@@ -63,7 +63,7 @@ function! s:vimWTF(line)
 endfunction
 
 function! s:bundleName(line)
-  return matchstr(a:line, '\v^(Bundle|Plugin) ("|'')\zs(\w|-|\/|\.)+\ze("|'')')
+  return matchstr(a:line, '\v^(Bundle|Plugin|Plug) ("|'')\zs(\w|-|\/|\.)+\ze("|'')')
 endfunction
 " }}}
 

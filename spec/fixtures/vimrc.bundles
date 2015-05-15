@@ -7,3 +7,5 @@ Plugin 'tpope/vim-rails.git'
 Plugin "rstacruz/sparkup", {'rtp': 'vim/'}
 Plugin "L9"
 Plugin 'FuzzyFinder'
+
+Plug 'tpope/vim-rails.git'

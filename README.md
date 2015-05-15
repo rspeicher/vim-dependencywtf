@@ -17,6 +17,7 @@ Plugin 'tsigo/vim-dependencywtf'
 * [Bundler](http://bundler.io/) - `gem "rails", '4.0.0'`
 * [RubyGems](https://rubygems.org/) - `s.add_dependency 'activesupport', [">= 4.0.0"]`
 * [Vundle](https://github.com/gmarik/Vundle.vim) - `Plugin "tpope/rails.vim"`
+* [Plug](https://github.com/junegunn/vim-plug) - `Plug 'tpope/rails.vim'`
 
 ## Configuration
 
@@ -46,6 +47,10 @@ bundle exec rake
 ```
 
 ## History
+
+**1.0.3** (2015-05-14)
+
+* Add [vim-plug](https://github.com/junegunn/vim-plug) support.
 
 **1.0.2** (2015-02-26)
 
